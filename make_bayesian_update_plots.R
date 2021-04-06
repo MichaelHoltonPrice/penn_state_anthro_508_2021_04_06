@@ -1,22 +1,14 @@
-# Create Bayesian update illustration plots for Michael Holton Price's
-# following 2021 Society for American Archaeology (SAA) presentation:
-#
-# Title:
-#   End-to-end Bayesian inference for summarizing sets of radiocarbon dates
-# Session:
-#  Constructing Chronologies
-# 
 # This script relies on the R package baydem available at:
 #
 # https://github.com/eehh-stanford/baydem
 #
 # The specific commit of baydem used for this script is:
 #
-# 2ab1cf3495e71d0d509aad7b8d806851186f844f
+# 8be9cc53bbedbbe0ba6f362e537ecdb152bc3c5f
 #
 # This version can be installed in R using the following command:
 #
-# devtools::install_github("eehh-stanford/baydem",ref="2ab1cf3495e71d0d509aad7b8d806851186f844f")
+# devtools::install_github("eehh-stanford/baydem",ref="8be9cc53bbedbbe0ba6f362e537ecdb152bc3c5f")
 
 # Clear the workspace
 rm(list=ls(all=TRUE))
@@ -35,9 +27,9 @@ th2 <- cbind(c(0.5,0.5, 900,1000,30,40))
 th3 <- cbind(c(0.0,1.0,1000,1000,40,40))
 
 # Calculate the probability densities
-f1 <- baydem::bd_calc_gauss_mix_pdf(th1,tau,taumin=tau_min,taumax=tau_max)
-f2 <- baydem::bd_calc_gauss_mix_pdf(th2,tau,taumin=tau_min,taumax=tau_max)
-f3 <- baydem::bd_calc_gauss_mix_pdf(th3,tau,taumin=tau_min,taumax=tau_max)
+f1 <- baydem::calc_gauss_mix_pdf(th1,tau,tau_min=tau_min,tau_max=tau_max)
+f2 <- baydem::calc_gauss_mix_pdf(th2,tau,tau_min=tau_min,tau_max=tau_max)
+f3 <- baydem::calc_gauss_mix_pdf(th3,tau,tau_min=tau_min,tau_max=tau_max)
 
 # Set the priors
 prior1 = .4
